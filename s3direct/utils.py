@@ -44,7 +44,7 @@ def get_s3direct_destinations():
                             index, dest_value)
             else:
                 converted_destinations[dest] = dest_value
-
+    print(555, converted_destinations, 5555)
     return converted_destinations
 
 
@@ -158,5 +158,5 @@ def create_upload_data(content_type, key, acl, bucket=None, cache_control=None,
 
     if content_disposition:
         return_dict['Content-Disposition'] = content_disposition
-
+    print(67777, return_dict, 66666)
     return return_dict

@@ -13,6 +13,7 @@ def get_upload_params(request):
     filename = request.POST['name']
 
     dest = get_s3direct_destinations().get(request.POST['dest'])
+    print(content_type, filename, dest, 888888888)
 
     if not dest:
         data = json.dumps({'error': 'File destination does not exist.'})
@@ -54,6 +55,7 @@ def get_upload_params(request):
 
     access_key = getattr(settings, 'AWS_ACCESS_KEY_ID', None)
     secret_access_key = getattr(settings, 'AWS_SECRET_ACCESS_KEY', None)
+    print(access_key, secret_access_key, 55555555)
     token = None
 
     if access_key is None or secret_access_key is None:
@@ -77,10 +79,10 @@ def get_upload_params(request):
             data = json.dumps({'error': 'Failed to access EC2 instance metadata due to missing dependency.'})
             return HttpResponse(data, content_type="application/json", status=500)
 
-
     data = create_upload_data(
         content_type, key, acl, bucket, cache_control, content_disposition,
         content_length_range, server_side_encryption, access_key, secret_access_key, token
     )
+    print('data', data)
 
     return HttpResponse(json.dumps(data), content_type="application/json")
