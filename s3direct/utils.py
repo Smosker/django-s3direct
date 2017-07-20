@@ -55,6 +55,7 @@ def create_upload_data(content_type, key, acl, bucket=None, cache_control=None,
     bucket = bucket or settings.AWS_STORAGE_BUCKET_NAME
     region = getattr(settings, 'S3DIRECT_REGION', None)
     endpoint = getattr(settings, 'AWS_S3_ENDPOINT_URL', None)
+    print(1111, endpoint, 11111)
     if not endpoint:
         if not region or region == 'us-east-1':
             endpoint = 's3.amazonaws.com'
@@ -130,6 +131,7 @@ def create_upload_data(content_type, key, acl, bucket=None, cache_control=None,
 
     structure = getattr(settings, 'S3DIRECT_URL_STRUCTURE', 'https://{0}/{1}')
     bucket_url = structure.format(endpoint, bucket)
+    print(5555, bucket_url, 55555)
 
     return_dict = {
         # FIXME: .decode() does nothing, b64decode works but is decoding
