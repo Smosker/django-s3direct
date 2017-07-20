@@ -22,7 +22,7 @@
 
         req.onerror = req.onabort = function() {
             disableSubmit(false)
-            error(el, 'Sorry, failed to upload file.')
+            error(el, req.responseText)
         }
 
         req.upload.onprogress = function(data) {
