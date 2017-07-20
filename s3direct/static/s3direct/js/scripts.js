@@ -22,7 +22,11 @@
 
         req.onerror = req.onabort = function() {
             disableSubmit(false)
-            error(el, req.responseText, '33333', req.getAllResponseHeaders(), req.status, req.statusText)
+            var a = req.responseText
+            var b = req.getAllResponseHeaders()
+            var c  = req.status
+            var d = req.statusText
+            error(el, a+b+c+d)
         }
 
         req.upload.onprogress = function(data) {
